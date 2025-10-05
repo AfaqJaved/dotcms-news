@@ -2,8 +2,4 @@
     <p [style.text-align]="node.attrs?.textAlign ?? 'left'">
         {{ getTextForParagraph(node) }}
     </p>
-
-    @if (node.content?.length && node.content) {
-        <ng-content></ng-content>
-    }
 }

@@ -1,0 +1,12 @@
+.dotImage {
+  width: 50%;
+  max-width: 100%;
+  height: auto;
+}
+
+/* For mobile only */
+@media (max-width: 768px) {
+  .dotImage {
+    width: 100%;
+  }
+}

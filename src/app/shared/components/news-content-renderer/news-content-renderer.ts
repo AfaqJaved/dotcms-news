@@ -18,7 +18,6 @@ import {BlockDotVideo} from '../block-editor/block-dot-video/block-dot-video';
 
 @Component({
   selector: 'app-news-content-renderer',
-  standalone: true,
   imports: [
     BlockHeading,
     BlockParagraph,

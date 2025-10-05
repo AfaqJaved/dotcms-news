@@ -1,6 +1,5 @@
 import {Component, Input} from '@angular/core';
 import {BlockEditorNode} from "../../../../core/types";
-import {NewsContentRenderer} from "../../news-content-renderer/news-content-renderer";
 
 @Component({
     selector: 'app-block-heading',
@@ -11,21 +10,12 @@ import {NewsContentRenderer} from "../../news-content-renderer/news-content-rend
 export class BlockHeading {
 
     @Input() node !: BlockEditorNode;
-    // @Input() parent !: NewsContentRenderer;
 
     getText(node: BlockEditorNode): string {
         if (!node.content) return node.text || '';
         return node.content.map(child => this.getText(child)).join('');
     }
 
-    getTextForParagraph(node: any): string {
-        if (!node) return '';
-        if (node.type === 'text') return node.text;
-        if (node.content?.length) {
-            return node.content.map((n: any) => this.getText(n)).join('');
-        }
-        return '';
-    }
 
     // Standard HTML heading font sizes
     getHeadingFontSize(level: number): string {

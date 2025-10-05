@@ -1,5 +1,48 @@
-<div class="table-wrapper">
-    <table border="1" style="border-collapse: collapse; width: 100%;">
-      <ng-content></ng-content>
-    </table>
-</div>
+
+@if (node.type === 'table') {
+  <div class="table-container">
+    @if (node.content) {
+      <table>
+        @for (row of node.content; track row) {
+          <tr>
+            @for (cell of row.content; track cell) {
+              @if (cell.type === 'tableHeader') {
+                <th
+                  [attr.colspan]="cell.attrs?.colspan || 1"
+                  [attr.rowspan]="cell.attrs?.rowspan || 1"
+                >
+                  @if (cell.content?.length) {
+                    @for (block of cell.content; track block) {
+                      @if (block.type === 'paragraph') {
+                        <p [style.text-align]="block.attrs?.textAlign || 'left'">
+                          {{ getText(block) }}
+                        </p>
+                      }
+                    }
+                  }
+                </th>
+              } @else {
+                <td
+                  [attr.colspan]="cell.attrs?.colspan || 1"
+                  [attr.rowspan]="cell.attrs?.rowspan || 1"
+                >
+                  @if (cell.content?.length) {
+                    @for (block of cell.content; track block) {
+                      @if (block.type === 'paragraph') {
+                        <p [style.text-align]="block.attrs?.textAlign || 'left'">
+                          {{ getText(block) }}
+                        </p>
+                      }
+                    }
+                  }
+                </td>
+              }
+            }
+          </tr>
+        }
+      </table>
+    }
+
+  </div>
+}
+

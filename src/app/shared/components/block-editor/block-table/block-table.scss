@@ -1,0 +1,28 @@
+.table-container {
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Inter', sans-serif;
+  border: 1px solid #ddd;
+}
+
+th,
+td {
+  border: 1px solid #ccc;
+  padding: 10px 12px;
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  background-color: #f4f4f4;
+  font-weight: 600;
+}
+
+tr:nth-child(even) td {
+  background-color: #fafafa;
+}
