@@ -20,6 +20,5 @@ export const dotCmsGetImageHelper = (payload: GetDotcmsImagePayload): string => 
   if (languageId) {
     url += `?language_id=${languageId}`;
   }
-
   return url;
 };

@@ -8,10 +8,11 @@ import {dotCmsGetImageHelper} from '../../../core/helpers/dotcms.image.url.helpe
 import {Loader} from '../../../shared/components/loader/loader';
 import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import {NewsDetail} from '../../../shared/components/news-detail/news-detail';
+import {BackToTop} from '../../../shared/components/back-to-top/back-to-top';
 
 @Component({
   selector: 'app-news-list',
-  imports: [CommonModule, Header, Loader, RouterLink, NewsDetail],
+  imports: [CommonModule, Header, Loader, RouterLink, NewsDetail, BackToTop],
   templateUrl: './news-list.html',
   styleUrl: './news-list.scss'
 })

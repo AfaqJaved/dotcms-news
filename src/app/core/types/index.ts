@@ -1,4 +1,3 @@
-import {BlockEditorMark} from '@dotcms/types';
 
 export type SupportedYears = 2020 | 2021 | 2022 | 2023 | 2024 | 2025 | 0;
 

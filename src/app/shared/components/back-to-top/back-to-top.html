@@ -1,0 +1,9 @@
+<button
+  class="back-to-top"
+  [@fadeInOut]="showButton ? 'visible' : 'hidden'"
+  *ngIf="showButton || (!showButton && false)"
+  (click)="scrollToTop()"
+  aria-label="Back to top"
+>
+  ⬆️
+</button>
