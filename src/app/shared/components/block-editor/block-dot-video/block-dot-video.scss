@@ -1,0 +1,16 @@
+.dot-video-container {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin: 16px 0;
+}
+
+.dot-video-container video {
+  border-radius: 8px;
+  height: auto;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.dot-video-container.vertical video {
+  max-height: 80vh;
+}

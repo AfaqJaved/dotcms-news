@@ -1,0 +1,14 @@
+<!--    Headings Start-->
+@if (node.type === 'heading') {
+    <h1
+            [style.text-align]="node.attrs?.textAlign ?? 'left'"
+            [style.font-size]="getHeadingFontSize(node.attrs?.level ?? 1)"
+    >
+        {{ getText(node) }}
+    </h1>
+
+    @if (node.type !== 'heading' && node.content?.length && node.content) {
+        <ng-content></ng-content>
+    }
+}
+<!--    Heading End-->

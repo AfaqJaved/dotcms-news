@@ -1,0 +1,27 @@
+@if (node?.type === 'orderedList') {
+  <ol [attr.start]="node.attrs?.start ?? 1">
+    @for (item of node.content; track item) {
+      @if (item.type === 'listItem') {
+        <li [style.text-align]="item.attrs?.textAlign ?? 'left'">
+          @for (child of item.content; track child) {
+
+            <!-- Paragraph inside list item -->
+            @if (child.type === 'paragraph') {
+              <p [style.text-align]="child.attrs?.textAlign ?? 'left'"
+                 [style.margin-left.px]="child.attrs?.indent ?? 0">
+                @for (textNode of child.content; track textNode) {
+                  @if (textNode.type === 'text') {
+                    <span
+                    >
+                      {{ textNode.text }}
+                    </span>
+                  }
+                }
+              </p>
+            }
+          }
+        </li>
+      }
+    }
+  </ol>
+}

@@ -1,0 +1,16 @@
+@if (node?.type === 'dotVideo') {
+  <div
+    class="dot-video-container"
+  >
+    <video
+      [src]="videoSrc"
+      [attr.width]="640"
+      [attr.height]="360"
+      [attr.title]="videoTitle"
+      controls
+      preload="metadata"
+    >
+      Your browser does not support the video tag.
+    </video>
+  </div>
+}

@@ -1,0 +1,19 @@
+@if (blog !== null) {
+  <main class="content">
+    <img [src]="dotCmsGetImageHelper({
+                  imageId: blog.image,
+                  width: 1200,
+                  height: 675,
+                  quality: 85,
+                  format: 'webp',
+              })"
+         alt="{{ blog.title }}" class="heroImage">
+    <article class="news-detail">
+      <h2 class="news-title">{{ blog.title }}</h2>
+      <span class="published">Published: {{ blog.publishDate | date : 'MMM d, y, h:mm a' }}</span>
+
+      <app-news-content-renderer [nodes]="blog.blogContent.content"></app-news-content-renderer>
+
+    </article>
+  </main>
+}

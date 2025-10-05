@@ -1,0 +1,21 @@
+<!-- Header Start -->
+<header class="header">
+  <div class="header-left">
+    <img src="{{imageUrl}}" alt="DotCMS Logo" class="logo"/>
+    <h2 class="title">{{title}}</h2>
+  </div>
+
+  <div class="filter">
+    <label for="filter">Select Year</label>
+    <select id="filter" (change)="onFilterChange($event)">
+      <option value="0" selected>all</option>
+      <option value="2025">2025</option>
+      <option value="2024">2024</option>
+      <option value="2023">2023</option>
+      <option value="2022">2022</option>
+      <option value="2021">2021</option>
+      <option value="2020">2020</option>
+    </select>
+  </div>
+</header>
+<!-- Header End -->

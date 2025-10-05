@@ -1,1 +1,20 @@
-/* You can add global styles to this file, and also import other style files */
+/* styles.scss (global styles for Angular) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Global font setup */
+html, body {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px; /* base font size */
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: #fff;
+  color: #222;
+}
+
+/* Apply Poppins to everything */
+* {
+  font-family: inherit;
+  box-sizing: border-box;
+}

@@ -1,0 +1,31 @@
+@if (node.type === 'bulletList') {
+  <ul>
+    @for (item of node.content; track item) {
+      @if (item.type === 'listItem') {
+        <li [style.text-align]="item.attrs?.textAlign ?? 'left'">
+
+          @for (child of item.content; track child) {
+
+            <!-- Paragraphs inside list item -->
+            @if (child.type === 'paragraph') {
+              <p [style.text-align]="child.attrs?.textAlign ?? 'left'"
+                 [style.margin-left.px]="child.attrs?.indent ?? 0">
+                @for (textNode of child.content; track textNode) {
+                  <span [style.font-weight]="isBold(textNode) ? 'bold' : 'normal'">
+                    {{ getText(textNode) }}
+                  </span>
+                }
+              </p>
+            }
+
+            <!-- Nested bullet list -->
+            @if (child.type === 'bulletList') {
+            <ng-content></ng-content>
+<!--              <app-news-content-renderer [nodes]="[child]"></app-news-content-renderer>-->
+            }
+          }
+        </li>
+      }
+    }
+  </ul>
+}

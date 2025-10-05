@@ -1,0 +1,32 @@
+{
+  "type": "dotVideo",
+  "attrs": {
+    "src": "/dA/bbc3928170e64789445fb5d471e0ecf9/asset/intro2.mp4",
+    "mimeType": "video/mp4",
+    "width": 1280,
+    "height": 720,
+    "orientation": "horizontal",
+    "data": {
+      "identifier": "bbc3928170e64789445fb5d471e0ecf9",
+      "languageId": 1,
+      "hostName": "SYSTEM_HOST",
+      "modDate": "2025-10-05T10:41:42.727+00:00",
+      "title": "intro2.mp4",
+      "contentTypeIcon": "movie",
+      "baseType": "DotAsset",
+      "inode": "90ad6a3b-e18e-4f80-90ef-b0ea150fcca8",
+      "archived": false,
+      "working": true,
+      "locked": false,
+      "stInode": "c77450b834901a20c8193ef9d561ee5b",
+      "contentType": "Video",
+      "live": true,
+      "owner": "dotcms.org.1",
+      "hasLiveVersion": true,
+      "folder": "SYSTEM_FOLDER",
+      "sortOrder": 0,
+      "modUser": "dotcms.org.1",
+      "asset": "/data/shared/assets/9/0/90ad6a3b-e18e-4f80-90ef-b0ea150fcca8/asset/intro2.mp4"
+    }
+  }
+}

@@ -1,0 +1,44 @@
+
+.heroImage {
+  width: 80%;
+  aspect-ratio: 16/9;
+  object-fit: fill; // ensures image fills container nicely
+  border: 1px solid black;
+
+  @media (max-width: 768px) {
+    aspect-ratio: 16/9;
+    width: 100%;
+  }
+}
+
+
+
+/* Content */
+.content {
+  padding: 1rem;
+
+  .news-detail {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    .news-title {
+      margin-top: 0;
+      font-size: 1.5rem;
+      color: #333;
+    }
+
+    .published {
+      font-size: 0.9rem;
+      color: #777;
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+  }
+}

@@ -1,0 +1,34 @@
+@if (node.type === 'dotContent') {
+  <div class="dot-content-card"
+       style="border: 1px solid #ccc; padding: 16px; margin-bottom: 16px; border-radius: 8px;">
+
+    <!-- Title -->
+    <h2 style="margin-bottom: 8px;">
+      {{ node.attrs?.data?.title }}
+    </h2>
+
+    <!-- Images -->
+    @if (node.attrs?.data?.image || node.attrs?.data?.image2) {
+      <div class="images" style="display: flex; gap: 8px; margin-bottom: 8px;">
+        @if (node.attrs?.data?.inode) {
+          <img [src]="environment.DOTCMS_URL + '/dA/' + node.attrs?.data?.inode "
+               alt="{{ node.attrs?.data?.title }}"
+               style="width: 150px; height: auto; object-fit: cover; border-radius: 4px;"/>
+        }
+      </div>
+    }
+
+    <!-- Description -->
+    @if (node.attrs?.data?.description) {
+      <div class="description" [innerHTML]="node.attrs?.data?.description" style="margin-bottom: 8px;"></div>
+    }
+
+    <!-- Price -->
+    @if (node.attrs?.data?.retailPrice) {
+      <div class="price" style="font-weight: bold; margin-bottom: 8px;">
+        Price: ${{ node.attrs?.data?.retailPrice }}
+      </div>
+    }
+
+  </div>
+}

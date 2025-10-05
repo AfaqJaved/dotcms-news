@@ -1,0 +1,21 @@
+@if (node.type === 'dotImage') {
+  <div [style.text-align]="node.attrs?.textAlign ?? 'left'">
+    @if (node.attrs && node.attrs.src) {
+      @if (node.attrs.href) {
+        <a [href]="node.attrs.href" target="_blank">
+          <img
+            [src]="environment.DOTCMS_URL + node.attrs.src"
+            [alt]="node.attrs.alt ?? ''"
+            style="max-width: 30%; height: auto;"
+          />
+        </a>
+      } @else {
+        <img
+          [src]="environment.DOTCMS_URL + node.attrs.src"
+          [alt]="node.attrs.alt ?? ''"
+          style="max-width: 40%; height: auto;"
+        />
+      }
+    }
+  </div>
+}
