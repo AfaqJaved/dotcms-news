@@ -1,9 +1,5 @@
 import {DotErrorPage, DotHttpError, DotErrorContent, DotErrorNavigation} from '@dotcms/types';
 
-type ErrorResponse = {
-  httpCode: number,
-  message: string,
-}
 
 
 export const dotcmsErrorHelper = (error: unknown): string => {
