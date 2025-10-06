@@ -1,0 +1,9 @@
+version: '3.9'
+
+services:
+  dotcms-assignment:
+    build: .
+    container_name: dotcms-assignment
+    ports:
+      - "4200:80" # map host port 4200 to container port 80
+    restart: always
