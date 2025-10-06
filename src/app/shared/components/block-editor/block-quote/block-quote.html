@@ -8,9 +8,9 @@
         <p [style.text-align]="child.attrs?.textAlign ?? 'left'">
           @for (textNode of child.content; track textNode) {
             @if (textNode.type === 'text') {
-              <span
+              <span style="color: orange"
               >
-                {{ textNode.text }}
+                "{{ textNode.text }}"
               </span>
             }
           }

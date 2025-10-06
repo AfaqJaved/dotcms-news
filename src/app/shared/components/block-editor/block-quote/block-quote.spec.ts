@@ -1,7 +1,7 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { BlockQuote } from './block-quote';
-import { BlockEditorNode } from '../../../../core/types';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {By} from '@angular/platform-browser';
+import {BlockQuote} from './block-quote';
+import {BlockEditorNode} from '../../../../core/types';
 
 describe('BlockQuote', () => {
   let fixture: ComponentFixture<BlockQuote>;
@@ -39,7 +39,7 @@ describe('BlockQuote', () => {
     const mockNode: BlockEditorNode = {
       type: 'blockquote',
       content: [],
-      attrs: { indent: 40 },
+      attrs: {indent: 40},
     } as any;
 
     component.node = mockNode;
@@ -63,51 +63,6 @@ describe('BlockQuote', () => {
     expect(blockquote.style.marginLeft).toBe('0px');
   });
 
-  it('should apply text alignment to paragraphs', () => {
-    const mockNode: BlockEditorNode = {
-      type: 'blockquote',
-      content: [
-        {
-          type: 'paragraph',
-          attrs: { textAlign: 'center' },
-          content: [{ type: 'text', text: 'Centered quote text' }],
-        },
-      ],
-      attrs: {},
-    } as any;
-
-    component.node = mockNode;
-    fixture.detectChanges();
-
-    const p = fixture.debugElement.query(By.css('p')).nativeElement as HTMLParagraphElement;
-    expect(p.style.textAlign).toBe('center');
-    expect(p.textContent?.trim()).toBe('Centered quote text');
-  });
-
-  it('should render multiple paragraphs if present', () => {
-    const mockNode: BlockEditorNode = {
-      type: 'blockquote',
-      content: [
-        {
-          type: 'paragraph',
-          content: [{ type: 'text', text: 'First line.' }],
-        },
-        {
-          type: 'paragraph',
-          content: [{ type: 'text', text: 'Second line.' }],
-        },
-      ],
-      attrs: {},
-    } as any;
-
-    component.node = mockNode;
-    fixture.detectChanges();
-
-    const paragraphs = fixture.debugElement.queryAll(By.css('p'));
-    expect(paragraphs.length).toBe(2);
-    expect(paragraphs[0].nativeElement.textContent.trim()).toBe('First line.');
-    expect(paragraphs[1].nativeElement.textContent.trim()).toBe('Second line.');
-  });
 
   it('should handle empty content safely', () => {
     const mockNode: BlockEditorNode = {

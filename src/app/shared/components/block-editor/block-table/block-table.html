@@ -2,7 +2,7 @@
 @if (node.type === 'table') {
   <div class="table-container">
     @if (node.content) {
-      <table>
+      <table class="table-container">
         @for (row of node.content; track row) {
           <tr>
             @for (cell of row.content; track cell) {

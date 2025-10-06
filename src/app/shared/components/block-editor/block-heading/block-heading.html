@@ -1,8 +1,24 @@
-@if (node.type === 'heading') {
-  <h1
-    [style.text-align]="node.attrs?.textAlign ?? 'left'"
-    [style.font-size]="getHeadingFontSize(node.attrs?.level ?? 1)"
-  >
-    {{ getText(node) }}
-  </h1>
+@if (node.type === 'heading' && node.attrs?.level) {
+
+  @switch (getHeadingTag(node.attrs?.level)) {
+    @case ("h1") {
+      <h1 [style.text-align]="node.attrs?.textAlign ?? 'left'">{{ getText(node) }}</h1>
+    }
+    @case ("h2") {
+      <h2 [style.text-align]="node.attrs?.textAlign ?? 'left'">{{ getText(node) }}</h2>
+    }
+    @case ("h3") {
+      <h3 [style.text-align]="node.attrs?.textAlign ?? 'left'">{{ getText(node) }}</h3>
+    }
+    @case ("h4") {
+      <h4 [style.text-align]="node.attrs?.textAlign ?? 'left'">{{ getText(node) }}</h4>
+    }
+    @case ("h5") {
+      <h5 [style.text-align]="node.attrs?.textAlign ?? 'left'">{{ getText(node) }}</h5>
+    }
+    @case ("h6") {
+      <h6 [style.text-align]="node.attrs?.textAlign ?? 'left'">{{ getText(node) }}</h6>
+    }
+  }
+
 }

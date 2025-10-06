@@ -1,5 +1,5 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {Component, Renderer2, signal} from '@angular/core';
+import {RouterOutlet} from '@angular/router';
 import {Loader} from './shared/components/loader/loader';
 
 @Component({
@@ -9,5 +9,8 @@ import {Loader} from './shared/components/loader/loader';
   styleUrl: './app.scss'
 })
 export class App {
+
   protected readonly title = signal('dotcms-news-list');
+
+
 }

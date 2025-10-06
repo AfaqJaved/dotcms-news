@@ -8,36 +8,27 @@
 </app-header>
 
 
-<div class="news-container">
-  <!-- Sidebar Start -->
-  <aside class="sidebar">
-    <ul class="news-list">
-      @if (filteredBlogs.length === 0) {
-        <p>No records</p>
-      }
-      @for (blog of filteredBlogs; track blog.identifier) {
-        <li [ngClass]="{'selected': blog.identifier === selectedBlog?.identifier}" class="news-item"
-            [routerLink]="['/blog', blog.identifier]" (click)="onSelectedBlogChange(blog)">
-          <div class="thumbnail">
-            <img
-              [src]="dotCmsGetImageHelper({
-                  imageId: blog.image,
-                  width: 100,
-                  height: 100,
-                  quality: 100,
-                  format: 'webp',
-              })"
-              alt="{{ blog.title }}"
-            />
-          </div>
-          <div class="info">
-            <h3>{{ blog.title }}</h3>
-            <span class="time">{{ blog.publishDate | date:'MMM d, y, h:mm a' }}</span>
-          </div>
-        </li>
-      }
-    </ul>
+<main class="main-layout">
+  <section class="article-list" id="article-list">
 
+    @for (blog of filteredBlogs; track blog.identifier) {
+      <div [routerLink]="['/blog', blog.identifier]" (click)="onSelectedBlogChange(blog)"
+           [class.selected]="blog.identifier === selectedBlog?.identifier" class="list-item" data-id="a1">
+        <div class="item-thumbnail">
+          <img src="{{dotCmsGetImageHelper({
+          imageId: blog.image,
+          width: 100,
+          height: 100,
+          quality: 100,
+          format: 'webp',
+          })}}" alt="{{ blog.title }}">
+        </div>
+        <div class="item-content">
+          <h3>{{ blog.title }}</h3>
+          <p>{{ blog.publishDate | date: 'MMM d, y, h:mm a' }}</p>
+        </div>
+      </div>
+    }
 
     <!-- Pagination Start -->
     @if (selectedFilter === 0) {
@@ -61,14 +52,7 @@
       <p>showing for year {{ selectedFilter }}</p>
     }
     <!-- Pagination End -->
-
-  </aside>
-  <!--  SideBar End-->
-
-  <!-- Main content -->
+  </section>
   <app-news-detail [blog]="selectedBlog"></app-news-detail>
+</main>
 
-
-  <app-back-to-top></app-back-to-top>
-
-</div>

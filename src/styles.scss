@@ -1,20 +1,366 @@
-/* styles.scss (global styles for Angular) */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+/* -------------------------------------------------------------------
+   SCSS Variables
+   ------------------------------------------------------------------- */
 
-/* Global font setup */
-html, body {
-  font-family: 'Poppins', sans-serif;
-  font-size: 16px; /* base font size */
-  line-height: 1.5;
+/* Base Colors */
+$color-bg-primary: #0a0b0f;
+$color-bg-secondary: #1e2025;
+$color-bg-selected: #2d313a;
+$color-text-primary: #f0f6fc;
+$color-text-secondary: #9aa0a6;
+$color-accent: #007bff; /* Electric Blue */
+$color-accent-hover: #4d94ff;
+$color-shadow: rgba(0, 0, 0, 0.4);
+
+
+/* Spacing */
+$spacing-xs: 8px;
+$spacing-sm: 12px;
+$spacing-md: 20px;
+$spacing-lg: 32px;
+$spacing-xl: 48px;
+
+/* Transitions */
+$transition-duration: 0.3s;
+$transition-ease: cubic-bezier(0.25, 0.8, 0.25, 1);
+
+/* -------------------------------------------------------------------
+   Global Resets & Transitions
+   ------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  height: 100%;
-  background-color: #fff;
-  color: #222;
+  transition: color $transition-duration, background-color $transition-duration, border-color $transition-duration, box-shadow $transition-duration;
 }
 
-/* Apply Poppins to everything */
-* {
-  font-family: inherit;
-  box-sizing: border-box;
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: $color-bg-primary;
+  color: $color-text-primary;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
+
+
+/* -------------------------------------------------------------------
+   Layout and Header
+   ------------------------------------------------------------------- */
+.app-header {
+  padding: $spacing-sm $spacing-xl;
+  background-color: $color-bg-secondary;
+  border-bottom: 1px solid $color-bg-selected;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .app-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: $color-text-primary;
+  }
+
+  .header-controls {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+
+    .mode-toggle-button {
+      background: none;
+      border: none;
+      color: $color-text-secondary;
+      cursor: pointer;
+      padding: $spacing-sm;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color $transition-duration, background-color $transition-duration;
+
+      &:hover {
+        color: $color-text-primary;
+        background-color: $color-bg-selected;
+      }
+
+      svg {
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+}
+
+.filter-dropdown {
+  position: relative;
+
+  select {
+    background-color: $color-bg-primary;
+    color: $color-text-primary;
+    padding: $spacing-sm $spacing-md;
+    border: 1px solid $color-bg-selected;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    appearance: none;
+    min-width: 150px;
+  }
+
+  &::after {
+    content: '▼';
+    position: absolute;
+    right: $spacing-sm;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: $color-text-secondary;
+    font-size: 0.75rem;
+  }
+}
+
+.main-layout {
+  display: grid;
+  grid-template-columns: 1fr; /* Default single column on mobile */
+  flex-grow: 1;
+
+  @media (min-width: 1024px) {
+    grid-template-columns: 350px 1fr;
+  }
+}
+
+/* -------------------------------------------------------------------
+   Article List (Sidebar)
+   ------------------------------------------------------------------- */
+.article-list {
+  background-color: $color-bg-secondary;
+  overflow-y: auto;
+  border-right: 1px solid $color-bg-selected;
+  padding-bottom: $spacing-md;
+  box-shadow: 2px 0 5px $color-shadow;
+
+  .list-item {
+    display: flex;
+    gap: $spacing-md;
+    padding: $spacing-md $spacing-xl;
+    cursor: pointer;
+    transition: background-color $transition-duration, transform $transition-duration;
+    border-left: 5px solid transparent;
+    min-height: 100px;
+    opacity: 0;
+    transform: translateX(-20px);
+    animation: list-slide-in 0.5s forwards;
+
+    &:hover {
+      background-color: $color-bg-selected;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px $color-shadow;
+    }
+
+    &.selected {
+      background-color: $color-bg-selected;
+      border-left: 5px solid $color-accent;
+      pointer-events: none;
+      transform: none;
+
+      .item-content h3 {
+        color: $color-accent-hover;
+        transition: color 0.5s ease-in-out;
+      }
+    }
+
+    .item-thumbnail {
+      width: 70px;
+      height: 70px;
+      min-width: 70px;
+      background-color: $color-bg-primary;
+      border-radius: 6px;
+      border: 1px solid $color-bg-selected;
+      flex-shrink: 0;
+      overflow: hidden;
+      position: relative;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.7;
+      }
+    }
+
+    .item-content {
+      h3 {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: $spacing-xs;
+        line-height: 1.4;
+      }
+
+      p {
+        font-size: 0.8rem;
+        color: $color-text-secondary;
+      }
+    }
+  }
+
+  @for $i from 1 through 5 {
+    .list-item:nth-child(#{$i}) {
+      animation-delay: 0.1s * ($i - 1);
+    }
+  }
+}
+
+/* Keyframes */
+@keyframes list-slide-in {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* -------------------------------------------------------------------
+   Article View (Main Content)
+   ------------------------------------------------------------------- */
+.hero-image-container {
+  margin-bottom: $spacing-lg;
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px $color-shadow;
+}
+
+.article-view {
+  padding: $spacing-xl;
+  overflow-y: auto;
+  position: relative;
+
+  &.active .article-content {
+    animation: content-fade-in 0.6s $transition-ease forwards;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  .article-content {
+    max-width: 800px;
+    margin: 0 auto;
+
+    h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: $spacing-sm;
+      line-height: 1.2;
+      color: $color-text-primary;
+    }
+  }
+}
+
+.article-meta {
+  font-size: 0.9rem;
+  color: $color-text-secondary;
+  margin-bottom: $spacing-xl;
+  border-bottom: 1px solid $color-bg-selected;
+  padding-bottom: $spacing-sm;
+}
+
+/* Keyframes for article content */
+@keyframes content-fade-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Standard Content Styling */
+.article-body {
+  p {
+    margin-bottom: $spacing-md;
+    font-size: 1.1rem;
+    color: $color-text-secondary;
+  }
+
+  h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: $spacing-lg 0 $spacing-md;
+    color: $color-accent-hover;
+    border-left: 4px solid $color-accent;
+    padding-left: $spacing-sm;
+    line-height: 1.2;
+  }
+
+  img,
+  video {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    margin: $spacing-lg 0;
+    box-shadow: 0 10px 20px $color-shadow;
+  }
+
+  ul,
+  ol {
+    margin: $spacing-md $spacing-md $spacing-lg $spacing-xl;
+    color: $color-text-secondary;
+
+    li {
+      margin-bottom: $spacing-xs;
+    }
+  }
+
+  blockquote {
+    margin: $spacing-lg 0;
+    padding: $spacing-md $spacing-lg;
+    border-left: 5px solid $color-accent;
+    background-color: $color-bg-secondary;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    color: $color-text-primary;
+    font-size: 1.25rem;
+  }
+}
+
+/* Cards */
+.card-container {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+  margin: $spacing-lg 0;
+
+  .feature-card {
+    padding: $spacing-md;
+    background-color: $color-bg-secondary;
+    border-radius: 10px;
+    border: 1px solid $color-bg-selected;
+    transition: transform $transition-duration;
+    box-shadow: 0 4px 10px $color-shadow;
+
+    &:hover {
+      transform: translateY(-5px);
+      border-color: $color-accent;
+    }
+
+    h4 {
+      color: $color-accent;
+      margin-bottom: $spacing-xs;
+    }
+  }
+}
+
+/* Placeholder image */
+.placeholder-image {
+  background: linear-gradient(135deg, $color-bg-selected 0%, $color-bg-primary 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 200px;
+  border-radius: 8px;
+  margin-bottom: $spacing-md;
+  color: $color-text-secondary;
+  font-style: italic;
+}
+

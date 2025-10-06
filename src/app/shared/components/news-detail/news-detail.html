@@ -1,19 +1,28 @@
 @if (blog !== null) {
-  <main class="content">
-    <img [src]="dotCmsGetImageHelper({
-                  imageId: blog.image,
-                  width: 1200,
-                  height: 675,
-                  quality: 85,
-                  format: 'webp',
-              })"
-         alt="{{ blog.title }}" class="heroImage">
-    <article class="news-detail">
-      <h2 class="news-title">{{ blog.title }}</h2>
-      <span class="published">Published: {{ blog.publishDate | date : 'MMM d, y, h:mm a' }}</span>
+  <section class="article-view" id="article-view">
+    <div class="article-content">
 
+      <!-- NEW HERO IMAGE CONTAINER -->
+      <div class="hero-image-container">
+        <img src="{{dotCmsGetImageHelper({
+            imageId : blog.image,
+            width : 800,
+            height : 500,
+            quality : 100,
+            format : 'webp',
+        })}}"
+             alt="{{blog.title}}"
+        >
+      </div>
+      <h1>{{ blog.title }}</h1>
+      <p class="article-meta">{{ blog.publishDate | date: 'MMM d, y, h:mm a' }}</p>
+
+
+<!--      Blog Body Renderer-->
       <app-news-content-renderer [nodes]="blog.blogContent.content"></app-news-content-renderer>
 
-    </article>
-  </main>
+
+    </div>
+  </section>
 }
+

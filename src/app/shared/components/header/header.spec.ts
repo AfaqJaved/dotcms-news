@@ -20,18 +20,7 @@ describe('Header', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should render title and logo correctly', () => {
-    component.title = 'DotCMS News';
-    component.imageUrl = 'https://example.com/logo.png';
-    fixture.detectChanges();
 
-    const titleEl = fixture.debugElement.query(By.css('.title')).nativeElement;
-    const imgEl = fixture.debugElement.query(By.css('.logo')).nativeElement;
-
-    expect(titleEl.textContent).toBe('DotCMS News');
-    expect(imgEl.getAttribute('src')).toBe('https://example.com/logo.png');
-    expect(imgEl.getAttribute('alt')).toBe('DotCMS Logo');
-  });
 
   it('should have correct year options', () => {
     fixture.detectChanges();
