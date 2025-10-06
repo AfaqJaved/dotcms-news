@@ -106,12 +106,13 @@ DOTCMS_AUTH_TOKEN=..
 2. Install the dependencies (npm install)
 3. Replace the env variables
 4. Run the project (npm run start)
+5. Visit http://localhost:4200
 
 
 ### Future Enhancements
 
-The following changes can be further:
+The following changes can be further improved:
 
-1- Improve the typing for blog data coming from dotcms.
-2- Can use any css framework like tailwind and ui library like angular material for better ui and ux.
-3- Eslint and Prettier for formatting and linting.
+- Improve the typing for blog data coming from dotcms.
+- Can use any css framework like tailwind and ui library like angular material for better ui and ux.
+- Eslint and Prettier for formatting and linting.
