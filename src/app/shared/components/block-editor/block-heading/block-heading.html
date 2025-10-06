@@ -1,24 +1,113 @@
 @if (node.type === 'heading' && node.attrs?.level) {
-
   @switch (getHeadingTag(node.attrs?.level)) {
     @case ("h1") {
-      <h1 [style.text-align]="node.attrs?.textAlign ?? 'left'">{{ getText(node) }}</h1>
+      <h1 [style.text-align]="node.attrs?.textAlign ?? 'left'">
+        @for (child of node.content; track $index) {
+          @if (hasLink(child)) {
+            <a [href]="getLink(child)?.href"
+               [attr.target]="getLink(child)?.target"
+               [attr.rel]="getLink(child)?.rel"
+               [ngStyle]="getStyles(child)">
+              {{ getText(child) }}
+            </a>
+          } @else {
+            <span [ngStyle]="getStyles(child)">
+              {{ getText(child) }}
+            </span>
+          }
+        }
+      </h1>
     }
     @case ("h2") {
-      <h2 [style.text-align]="node.attrs?.textAlign ?? 'left'">{{ getText(node) }}</h2>
+      <h2 [style.text-align]="node.attrs?.textAlign ?? 'left'">
+        @for (child of node.content; track $index) {
+          @if (hasLink(child)) {
+            <a [href]="getLink(child)?.href"
+               [attr.target]="getLink(child)?.target"
+               [attr.rel]="getLink(child)?.rel"
+               [ngStyle]="getStyles(child)">
+              {{ getText(child) }}
+            </a>
+          } @else {
+            <span [ngStyle]="getStyles(child)">
+              {{ getText(child) }}
+            </span>
+          }
+        }
+      </h2>
     }
     @case ("h3") {
-      <h3 [style.text-align]="node.attrs?.textAlign ?? 'left'">{{ getText(node) }}</h3>
+      <h3 [style.text-align]="node.attrs?.textAlign ?? 'left'">
+        @for (child of node.content; track $index) {
+          @if (hasLink(child)) {
+            <a [href]="getLink(child)?.href"
+               [attr.target]="getLink(child)?.target"
+               [attr.rel]="getLink(child)?.rel"
+               [ngStyle]="getStyles(child)">
+              {{ getText(child) }}
+            </a>
+          } @else {
+            <span [ngStyle]="getStyles(child)">
+              {{ getText(child) }}
+            </span>
+          }
+        }
+      </h3>
     }
     @case ("h4") {
-      <h4 [style.text-align]="node.attrs?.textAlign ?? 'left'">{{ getText(node) }}</h4>
+      <h4 [style.text-align]="node.attrs?.textAlign ?? 'left'">
+        @for (child of node.content; track $index) {
+          @if (hasLink(child)) {
+            <a [href]="getLink(child)?.href"
+               [attr.target]="getLink(child)?.target"
+               [attr.rel]="getLink(child)?.rel"
+               [ngStyle]="getStyles(child)">
+              {{ getText(child) }}
+            </a>
+          } @else {
+            <span [ngStyle]="getStyles(child)">
+              {{ getText(child) }}
+            </span>
+          }
+        }
+      </h4>
     }
     @case ("h5") {
-      <h5 [style.text-align]="node.attrs?.textAlign ?? 'left'">{{ getText(node) }}</h5>
+      <h5 [style.text-align]="node.attrs?.textAlign ?? 'left'">
+        @for (child of node.content; track $index) {
+          @if (hasLink(child)) {
+            <a [href]="getLink(child)?.href"
+               [attr.target]="getLink(child)?.target"
+               [attr.rel]="getLink(child)?.rel"
+               [ngStyle]="getStyles(child)">
+              {{ getText(child) }}
+            </a>
+          } @else {
+            <span [ngStyle]="getStyles(child)">
+              {{ getText(child) }}
+            </span>
+          }
+        }
+      </h5>
     }
     @case ("h6") {
-      <h6 [style.text-align]="node.attrs?.textAlign ?? 'left'">{{ getText(node) }}</h6>
+      <h6 [style.text-align]="node.attrs?.textAlign ?? 'left'">
+        @for (child of node.content; track $index) {
+          @if (hasLink(child)) {
+            <a [href]="getLink(child)?.href"
+               [attr.target]="getLink(child)?.target"
+               [attr.rel]="getLink(child)?.rel"
+               [ngStyle]="getStyles(child)">
+              {{ getText(child) }}
+            </a>
+          } @else {
+            <span [ngStyle]="getStyles(child)">
+              {{ getText(child) }}
+            </span>
+          }
+        }
+      </h6>
     }
   }
-
 }
+

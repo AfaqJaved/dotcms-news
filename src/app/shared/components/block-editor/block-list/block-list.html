@@ -8,20 +8,27 @@
 
             <!-- Paragraphs inside list item -->
             @if (child.type === 'paragraph') {
-              <p [style.text-align]="child.attrs?.textAlign ?? 'left'"
-                 [style.margin-left.px]="child.attrs?.indent ?? 0">
-                @for (textNode of child.content; track textNode) {
-                  <span [style.font-weight]="isBold(textNode) ? 'bold' : 'normal'">
-                    {{ getText(textNode) }}
-                  </span>
+              <p [style.text-align]="child.attrs?.textAlign ?? 'left'">
+                @for (textNode of child.content; track $index) {
+                  @if (hasLink(textNode)) {
+                    <a [href]="getLink(textNode)?.href"
+                       [attr.target]="getLink(textNode)?.target"
+                       [attr.rel]="getLink(textNode)?.rel"
+                       [ngStyle]="getStyles(textNode)">
+                      {{ getText(textNode) }}
+                    </a>
+                  } @else {
+                    <span [ngStyle]="getStyles(textNode)">
+                {{ getText(textNode) }}
+              </span>
+                  }
                 }
               </p>
             }
 
             <!-- Nested bullet list -->
             @if (child.type === 'bulletList') {
-            <ng-content></ng-content>
-<!--              <app-news-content-renderer [nodes]="[child]"></app-news-content-renderer>-->
+              <app-block-list [node]="child"></app-block-list>
             }
           }
         </li>

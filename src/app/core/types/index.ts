@@ -16,6 +16,9 @@ export interface BlockEditorNode {
     start?: number;
     indent?: number;
     href?: string;
+    target?: string;
+    rel?: string;
+    class?: string;
     src?: string;
     alt?: string;
     title?: string;

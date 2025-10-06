@@ -3,5 +3,7 @@
   overflow-x: auto; /* Makes table responsive on small screens */
   margin: var(--spacing-lg) 0;
   border-radius: 8px;
-  box-shadow: 0 4px 15px var(--color-shadow);
+  border: 1px solid white;
+  padding: 16px;
+  //box-shadow: 0 4px 15px var(--color-shadow);
 }

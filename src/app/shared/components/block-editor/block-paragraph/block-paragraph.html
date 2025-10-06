@@ -1,5 +1,19 @@
 @if (node.type === 'paragraph') {
-    <p [style.text-align]="node.attrs?.textAlign ?? 'left'">
-        {{ getTextForParagraph(node) }}
-    </p>
+  <p [style.text-align]="node.attrs?.textAlign ?? 'left'">
+    @for (child of node.content; track $index) {
+      @if (hasLink(child)) {
+        <a [href]="getLink(child)?.href"
+           [attr.target]="getLink(child)?.target"
+           [attr.rel]="getLink(child)?.rel"
+           [ngStyle]="getStyles(child)">
+          {{ getText(child) }}
+        </a>
+      } @else {
+        <span [ngStyle]="getStyles(child)">
+              {{ getText(child) }}
+            </span>
+      }
+    }
+  </p>
 }
+
