@@ -1,13 +1,10 @@
 import {Component, Input} from '@angular/core';
 import {BlockEditorNode} from "../../../../core/types";
-import {NgSwitch, NgSwitchCase} from '@angular/common';
 
 
 @Component({
   selector: 'app-block-heading',
   imports: [
-    NgSwitchCase,
-    NgSwitch
   ],
   templateUrl: './block-heading.html',
   styleUrl: './block-heading.scss'

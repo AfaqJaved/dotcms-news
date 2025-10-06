@@ -13,7 +13,7 @@
 
     @for (blog of filteredBlogs; track blog.identifier) {
       <div [routerLink]="['/blog', blog.identifier]" (click)="onSelectedBlogChange(blog)"
-           [class.selected]="blog.identifier === selectedBlog?.identifier" class="list-item" data-id="a1">
+           [class.selected]="blog.identifier === selectedBlog.identifier" class="list-item" data-id="a1">
         <div class="item-thumbnail">
           <img src="{{dotCmsGetImageHelper({
           imageId: blog.image,
@@ -32,22 +32,24 @@
 
     <!-- Pagination Start -->
     @if (selectedFilter === 0) {
-      <div class="pagination">
-        <span class="page-info">Page {{ page }} of {{ totalPages }}</span>
-        <div class="page-limit">
-          <label for="limit" style="color: white">Limit:</label>
-          <select id="limit" (change)="onLimitChange($event)">
-            <option value="5" selected>5</option>
-            <option value="10">10</option>
-            <option value="20">20</option>
-            <option value="50">50</option>
-          </select>
+        <div class="pagination">
+          <span class="page-info">Page {{ page }} of {{ totalPages }}</span>
+          <div class="page-limit">
+            <label for="limit" style="color: white">Limit:</label>
+            <select class="selectLimit" id="limit" (change)="onLimitChange($event)">
+              <option value="5" selected>5</option>
+              <option value="10">10</option>
+              <option value="20">20</option>
+              <option value="50">50</option>
+            </select>
+          </div>
+          <div class="pagination-buttons">
+            <button class="page-btn prev" [disabled]="page === 1" (click)="onPreviousPage()">« Prev</button>
+            <button class="page-btn next" (click)="onNextPage()" [disabled]="page === totalPages">Next »</button>
+          </div>
         </div>
-      </div>
-      <div class="pagination-buttons">
-        <button class="page-btn prev" [disabled]="page === 1" (click)="onPreviousPage()">« Prev</button>
-        <button class="page-btn next" (click)="onNextPage()" [disabled]="page === totalPages">Next »</button>
-      </div>
+
+
     } @else {
       <p>showing for year {{ selectedFilter }}</p>
     }
@@ -56,3 +58,4 @@
   <app-news-detail [blog]="selectedBlog"></app-news-detail>
 </main>
 
+<app-back-to-top></app-back-to-top>

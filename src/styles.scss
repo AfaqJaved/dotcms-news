@@ -45,7 +45,6 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  overflow-x: hidden;
 }
 
 
@@ -64,35 +63,6 @@ body {
     font-size: 1.8rem;
     font-weight: 700;
     color: $color-text-primary;
-  }
-
-  .header-controls {
-    display: flex;
-    align-items: center;
-    gap: $spacing-md;
-
-    .mode-toggle-button {
-      background: none;
-      border: none;
-      color: $color-text-secondary;
-      cursor: pointer;
-      padding: $spacing-sm;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: color $transition-duration, background-color $transition-duration;
-
-      &:hover {
-        color: $color-text-primary;
-        background-color: $color-bg-selected;
-      }
-
-      svg {
-        width: 24px;
-        height: 24px;
-      }
-    }
   }
 }
 
@@ -123,22 +93,15 @@ body {
   }
 }
 
+
 .main-layout {
-  display: flex;
-  //grid-template-columns: 1fr; /* Default single column on mobile */
-  //flex-grow: 1;
-  overflow-x: hidden;
-  background: red;
+  display: grid;
+  grid-template-columns: 1fr; /* Default single column on mobile */
 
 
   @media (min-width: 768px) {
-    grid-template-columns: 250px 1fr; // tablet
+    grid-template-columns: 350px 1fr; // desktop: sidebar + detail
   }
-
-  @media (min-width: 1024px) {
-    grid-template-columns: 350px 1fr; // desktop
-  }
-
 
 }
 
@@ -152,6 +115,7 @@ body {
   padding-bottom: $spacing-md;
   box-shadow: 2px 0 5px $color-shadow;
 
+
   .list-item {
     display: flex;
     gap: $spacing-md;
@@ -159,7 +123,7 @@ body {
     cursor: pointer;
     transition: background-color $transition-duration, transform $transition-duration;
     border-left: 5px solid transparent;
-    min-height: 100px;
+    //min-height: 100px;
     opacity: 0;
     transform: translateX(-20px);
     animation: list-slide-in 0.5s forwards;
@@ -190,7 +154,6 @@ body {
       border-radius: 6px;
       border: 1px solid $color-bg-selected;
       flex-shrink: 0;
-      overflow: hidden;
       position: relative;
 
       img {
@@ -234,15 +197,21 @@ body {
 /* -------------------------------------------------------------------
    Article View (Main Content)
    ------------------------------------------------------------------- */
+
 .hero-image-container {
   margin-bottom: $spacing-lg;
-  width: 100%;
-  height: auto;
-  max-height: 400px;
-  overflow: hidden;
   border-radius: 12px;
   box-shadow: 0 10px 30px $color-shadow;
+  overflow: hidden;       // prevent child from overflowing
 }
+
+.hero-image-container img {
+  width: 100%;            // take full width of container
+  height: auto;           // keep aspect ratio
+  display: block;         // remove bottom gap
+  border-radius: 12px;    // optional: match container
+}
+
 
 .article-view {
   padding: $spacing-xl;
@@ -259,6 +228,7 @@ body {
     max-width: 800px;
     margin: 0 auto;
 
+
     h1 {
       font-size: 3rem;
       font-weight: 800;
@@ -267,6 +237,7 @@ body {
       color: $color-text-primary;
     }
   }
+
 }
 
 .article-meta {

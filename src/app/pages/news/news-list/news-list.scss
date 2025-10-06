@@ -6,14 +6,14 @@
 
   .page-btn {
     padding: 6px 12px;
-    border: 1px solid #ccc;
-    background: #f8f8f8;
+    background: #4D95FF;
     cursor: pointer;
+    color: white;
     border-radius: 6px;
     transition: background 0.2s ease;
 
     &:hover {
-      background: #eaeaea;
+      background: #0d70fb;
     }
 
     &.prev {
@@ -22,7 +22,6 @@
 
     &.next {
       margin-left: auto;
-
     }
   }
 }
@@ -30,6 +29,7 @@
 .pagination {
   padding: 12px;
   display: flex;
+  margin: 10px;
   align-items: center;
   justify-content: space-between;
   border-top: 1px solid #ccc;
@@ -49,6 +49,16 @@
     display: flex;
     align-items: center;
     gap: 6px;
+
+    .selectLimit {
+      background-color: #0a0b0f;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      appearance: none;
+      min-width: 50px;
+      color: white;
+    }
 
     label {
       font-size: 13px;

@@ -2,7 +2,6 @@
   <section class="article-view" id="article-view">
     <div class="article-content">
 
-      <!-- NEW HERO IMAGE CONTAINER -->
       <div class="hero-image-container">
         <img src="{{dotCmsGetImageHelper({
             imageId : blog.image,
@@ -18,7 +17,6 @@
       <p class="article-meta">{{ blog.publishDate | date: 'MMM d, y, h:mm a' }}</p>
 
 
-<!--      Blog Body Renderer-->
       <app-news-content-renderer [nodes]="blog.blogContent.content"></app-news-content-renderer>
 
 

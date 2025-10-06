@@ -1,4 +1,4 @@
-@if (node?.type === 'orderedList') {
+@if (node.type === 'orderedList') {
   <ol [attr.start]="node.attrs?.start ?? 1">
     @for (item of node.content; track item) {
       @if (item.type === 'listItem') {
