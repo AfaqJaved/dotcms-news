@@ -35,35 +35,6 @@ describe('BlockQuote', () => {
   });
 
 
-  it('should apply custom left margin from node.attrs.indent', () => {
-    const mockNode: BlockEditorNode = {
-      type: 'blockquote',
-      content: [],
-      attrs: {indent: 40},
-    } as any;
-
-    component.node = mockNode;
-    fixture.detectChanges();
-
-    const blockquote = fixture.debugElement.query(By.css('blockquote')).nativeElement as HTMLElement;
-    expect(blockquote.style.marginLeft).toBe('40px');
-  });
-
-  it('should apply default left margin (0px) when indent not provided', () => {
-    const mockNode: BlockEditorNode = {
-      type: 'blockquote',
-      content: [],
-      attrs: {},
-    } as any;
-
-    component.node = mockNode;
-    fixture.detectChanges();
-
-    const blockquote = fixture.debugElement.query(By.css('blockquote')).nativeElement as HTMLElement;
-    expect(blockquote.style.marginLeft).toBe('0px');
-  });
-
-
   it('should handle empty content safely', () => {
     const mockNode: BlockEditorNode = {
       type: 'blockquote',

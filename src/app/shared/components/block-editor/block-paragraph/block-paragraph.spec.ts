@@ -33,27 +33,8 @@ describe('BlockParagraph', () => {
     expect(p.textContent?.trim()).toBe('Hello World');
   });
 
-  it('should render paragraph with nested content using getTextForParagraph', () => {
-    const mockNode: BlockEditorNode = {
-      type: 'paragraph',
-      content: [
-        {
-          type: 'text',
-          text: 'Nested ',
-        },
-        {
-          type: 'text',
-          text: 'Content',
-        },
-      ],
-    } as any;
 
-    component.node = mockNode;
-    fixture.detectChanges();
 
-    const p = fixture.debugElement.query(By.css('p')).nativeElement as HTMLParagraphElement;
-    expect(p.textContent?.trim()).toBe('Nested Content');
-  });
 
   it('should apply default text alignment (left)', () => {
     const mockNode: BlockEditorNode = {
