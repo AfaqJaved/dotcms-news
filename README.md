@@ -1,4 +1,4 @@
-# Dotcms News Listing [Watch the video will save time ](https://https://s3.afaqjaved.com/general/intro.mp4)
+# Dotcms News Listing [Watch the video will save time ](https://s3.afaqjaved.com/general/intro.mp4)
 
 
 ## Project Overview
