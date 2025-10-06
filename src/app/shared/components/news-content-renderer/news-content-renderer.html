@@ -10,11 +10,7 @@
     <app-block-dot-video [node]="node"></app-block-dot-video>
     <app-block-heading [node]="node"/>
     <app-block-paragraph [node]="node"/>
-    <app-block-list [node]="node">
-      @if (node.content) {
-        <app-news-content-renderer [nodes]="node.content"></app-news-content-renderer>
-      }
-    </app-block-list>
+    <app-block-list [node]="node"/>
     <app-block-table [node]="node"></app-block-table>
   </div>
 }
